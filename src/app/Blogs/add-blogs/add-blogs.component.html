@@ -1,1 +1,53 @@
-<p>add-blogs works!</p>
+<div matDialogTitle>
+  <h1>Add Blogs</h1>
+</div>
+
+<form [formGroup]="blogForm" (ngSubmit)="onFormSubmit()">
+  <div matDialogContent class="form">
+    <mat-form-field appearance="outline">
+      <mat-label> Blog Title</mat-label>
+      <input matInput formControlName="blogTitle" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Summary</mat-label>
+      <input matInput formControlName="summary" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Author</mat-label>
+      <input matInput formControlName="author" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="date-picker">
+      <mat-label>Publishing Date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="publishingDate"
+      />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Image URL</mat-label>
+      <input matInput formControlName="imageUrl" />
+    </mat-form-field>
+  </div>
+  <div matDialogActions class="dialog-button">
+    <button mat-raised-button type="button" [mat-dialog-close]="false">
+      Cancel
+    </button>
+    <button mat-raised-button color="primary" type="submit">Save</button>
+  </div>
+</form>
